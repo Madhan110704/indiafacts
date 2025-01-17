@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple SPA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        nav button {
+            margin: 0 10px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        main {
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        section {
+            display: none;
+        }
+
+        section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Welcome to My SPA</h1>
+            <nav>
+                <button id="homeBtn">Home</button>
+                <button id="aboutBtn">About</button>
+            </nav>
+        </header>
+        <main>
+            <section id="home" class="active">
+                <h2>Home</h2>
+                <p>This is the home section of the SPA.</p>
+            </section>
+            <section id="about">
+                <h2>About</h2>
+                <p>This section contains information about the SPA.</p>
+            </section>
+        </main>
+    </div>
+    <script>
+        document.getElementById('homeBtn').addEventListener('click', function() {
+            showSection('home');
+        });
+
+        document.getElementById('aboutBtn').addEventListener('click', function() {
+            showSection('about');
+        });
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('main section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
